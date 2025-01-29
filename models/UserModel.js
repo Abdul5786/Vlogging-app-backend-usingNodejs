@@ -2,7 +2,7 @@ import mongoose, { Mongoose } from "mongoose";
 
 const userSchema = new mongoose.Schema({
      
-     name:{
+     username:{
         type:String,
         require:true
        },
@@ -12,11 +12,30 @@ const userSchema = new mongoose.Schema({
         require:true
        },
 
+       password:{
+         type:String,
+         require:true,
+       },
+
     address:{
         type:String,
         require:true
-       }
+       },
 
-})
+       role:{
+         type:String,
+         require:true,
+         enum:["admin","manager","user"]
+       },
+
+       
+      
+
+},
+   {
+   timestamps:true
+   }
+
+)
 
 export default mongoose.model("users",userSchema);
